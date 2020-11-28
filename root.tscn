@@ -1,27 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
-[ext_resource path="res://Node2D.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ImageTexture" id=1]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
-grow_horizontal = 0
-grow_vertical = 0
-stretch_mode = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="TextureRect"]
-texture = SubResource( 1 )
-centered = false
 
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_left = 101.0
@@ -54,8 +39,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YSort" type="YSort" parent="."]
+[node name="CreateToken" type="Button" parent="CanvasLayer"]
+margin_left = 20.0
+margin_top = 50.0
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Create Token"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Node2D" parent="YSort" instance=ExtResource( 3 )]
+[node name="Sprite" type="Sprite" parent="."]
+texture = SubResource( 1 )
+centered = false
+
+[node name="FileDialog2" type="FileDialog" parent="."]
+margin_left = 107.0
+margin_top = 93.0
+margin_right = 594.0
+margin_bottom = 343.0
+window_title = "Select Token Image"
+mode = 0
+access = 2
+current_dir = "/Program/Godot/Projects/battlemap_project"
+current_path = "/Program/Godot/Projects/battlemap_project/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="pressed" from="CanvasLayer/BrowseBattlemap" to="." method="_on_BrowseBattlemap_pressed"]
+[connection signal="pressed" from="CanvasLayer/CreateToken" to="." method="_on_CreateToken_pressed"]
+[connection signal="file_selected" from="FileDialog2" to="." method="_on_FileDialog2_file_selected"]
